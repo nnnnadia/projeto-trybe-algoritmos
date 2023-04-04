@@ -21,7 +21,7 @@ def get_unique_industries(path: str) -> List[str]:
     unique_industries = []
     for row in jobs:
         industry = row["industry"]
-        if industry not in unique_industries:
+        if industry not in unique_industries and industry != "":
             unique_industries.append(industry)
     return unique_industries
 
