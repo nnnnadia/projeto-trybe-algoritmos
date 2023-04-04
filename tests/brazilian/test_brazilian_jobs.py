@@ -1,17 +1,17 @@
 from src.pre_built.brazilian_jobs import read_brazilian_file
-from unittest.mock import patch, mock_open
+from unittest.mock import patch, Mock
 
 
 mock_file_pt = [
-    {"salário": "2000", "título": "Maquinista", "tipo": "trainee"},
+    {"salario": "2000", "titulo": "Maquinista", "tipo": "trainee"},
 ]
 
 
 mock_file_en = [
-    {"salário": "2000", "título": "Maquinista", "tipo": "trainee"},
+    {"salary": "2000", "title": "Maquinista", "type": "trainee"},
 ]
 
 
 def test_brazilian_jobs():
-    with patch("src.insights.jobs.read", mock_open(return_value=mock_file_pt)):
+    with patch("src.insights.jobs.read", Mock(return_value=mock_file_pt)):
         assert read_brazilian_file("some_path") == mock_file_en
